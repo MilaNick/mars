@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  @include mt(32px);
+  @include border();
+
+  &__logo {
+    flex-grow: 1;
+  }
+
+  &__nav {
+
+  }
+
+  &__btn {
+
+  }
+}

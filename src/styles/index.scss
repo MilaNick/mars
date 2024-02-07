@@ -1,4 +1,12 @@
-@import "normalize";
+@import "reset";
 @import "variables";
 @import "mixins";
+@import "media";
 
+@import "components/base";
+@import "components/header";
+@import "components/layout";
+@import "components/nav";
+@import "components/first-screen";
+@import "ui/buttons";
+@import "ui/logo";

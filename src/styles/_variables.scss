@@ -1,9 +1,17 @@
-/* base */
+/* base sizes */
 $mt: 30px;
+$b-radius: 4px;
+
+/* fonts */
+$font-primary: 'Montserrat', sans-serif;
+$font-secondary: 'Oswald', sans-serif;
+$font-tertiary: 'Bebas Neue', sans-serif;
+$font-size: 16px;
+$weight: 500;
 
 /* color */
-$primary-bg: #f2e1c2;
-$secondary-bg: #262526;
-$logo-accent: #f23207;
-$primary-text: #f2e1c2;
-$secondary-text: #262526;
+$bg-primary: #f2e1c2;
+$bg-secondary: #262526;
+$accent: #f23207;
+$text-primary: #f2e1c2;
+$text-secondary: #262526;

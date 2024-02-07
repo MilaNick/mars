@@ -1,0 +1,41 @@
+@mixin media($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+$mobile-sm: 575px;
+$mobile: 767px;
+$laptop: 991px;
+$desktop: 1199px;
+$desktop-lg: 1399px;
+
+@mixin mobile-sm() {
+  @include media($mobile-sm) {
+    @content;
+  }
+}
+
+@mixin mobile() {
+  @include media($mobile) {
+    @content;
+  }
+}
+
+@mixin laptop() {
+  @include media($laptop) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @include media($desktop) {
+    @content;
+  }
+}
+
+@mixin desktop-lg() {
+  @include media($desktop-lg) {
+    @content;
+  }
+}

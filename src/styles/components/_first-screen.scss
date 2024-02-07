@@ -1,0 +1,51 @@
+.first-screen {
+  @include mt(50px);
+  &__body {
+
+  }
+
+  &__line {
+
+  }
+
+  &__line-up-dot {
+
+  }
+
+  &__line-down-dot {
+
+  }
+
+  &__above-text {
+    padding: 40px 36px;
+    color: $accent;
+    font: 500 36px $font-primary;
+    letter-spacing: 0.03rem;
+    //@include desktop() {
+    //  background: red !important;
+    //}
+  }
+
+  &__wrap-text {
+    display: flex;
+  }
+
+  &__mask-text {
+    margin-left: 6px;
+    margin-bottom: -0.107em;
+    color: $text-primary;
+    font: 500 715px $font-tertiary;
+    letter-spacing: -0.7rem;
+    line-height: 0.82;
+  }
+
+  &__video {
+
+  }
+
+}
+
+.space {
+  width: 100%;
+  height: calc((100% - 545px) / 3);
+}
