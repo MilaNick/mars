@@ -1,0 +1,9 @@
+@mixin mt($mt) {
+  margin-top: $mt;
+}
+
+@mixin text($font-size, $font-weight:"400") {
+  font-size: $font-size;
+  font-weight: $font-weight;
+}
+
