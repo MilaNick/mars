@@ -1,38 +1,61 @@
 .first-screen {
-  @include mt(50px);
+  position: relative;
+  @include mt(-12px);
   &__body {
 
   }
 
   &__line {
-
+    position: absolute;
+    width: 2px;
+    top: 0;
+    left: 3px;
+    bottom: 0;
+    background: $decor;
+    z-index: 10;
   }
 
   &__line-up-dot {
-
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    top: 0;
+    left: -2px;
+    border-radius: 100%;
+    background: $decor;
+    z-index: 10;
   }
 
   &__line-down-dot {
-
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: -4px;
+    bottom: 0;
+    border-radius: 100%;
+    background: $decor;
+    z-index: 10;
   }
 
   &__above-text {
-    padding: 40px 36px;
+    padding: 8px 34px 34px;
     color: $accent;
     font: 500 36px $font-primary;
-    letter-spacing: 0.03rem;
+    letter-spacing: 0.05rem;
     //@include desktop() {
     //  background: red !important;
     //}
   }
 
   &__wrap-text {
+    position: relative;
     display: flex;
+    overflow: hidden;
   }
 
   &__mask-text {
     margin-left: 6px;
-    margin-bottom: -0.107em;
+    margin-bottom: -0.1em;
     color: $text-primary;
     font: 500 715px $font-tertiary;
     letter-spacing: -0.7rem;
@@ -40,12 +63,14 @@
   }
 
   &__video {
-
+    position: absolute;
+    top: -40px;
+    mix-blend-mode: darken;
   }
 
 }
-
-.space {
-  width: 100%;
-  height: calc((100% - 545px) / 3);
-}
+//
+//.space {
+//  width: 100%;
+//  height: calc((100% - 545px) / 3);
+//}

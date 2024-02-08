@@ -6,8 +6,11 @@ body {
   width: 100%;
   height: 100%;
   background: $bg-secondary;
+  background: green;
   color: $text-secondary;
   font-family: $font-primary;
   font-size: $font-size;
   text-transform: uppercase;
+  box-sizing: border-box;
+  overflow: hidden;
 }
