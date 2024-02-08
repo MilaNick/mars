@@ -1,19 +1,13 @@
 .header {
+  position: relative;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  @include mt(32px);
+  margin-top: 32px;
+  z-index: 15;
 
   &__logo {
     flex-grow: 1;
-  }
-
-  &__nav {
-
-  }
-
-  &__btn {
-
   }
 }

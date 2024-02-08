@@ -1,0 +1,17 @@
+.qs-datepicker-container {
+  background: $bg-secondary;
+  color: $text-primary;
+}
+
+.qs-controls {
+  background: $bg-secondary;
+  color: $text-primary;
+}
+
+.qs-range-middle {
+  background: #2ea181;
+}
+
+.qs-active, .qs-range-end, .qs-range-start {
+  background: #45d5ad;
+}

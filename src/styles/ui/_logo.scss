@@ -3,6 +3,9 @@
   &__svg {
     width: 82px;
     height: 36px;
-    fill: $accent;
+
+    &-path {
+      fill: $accent;
+    }
   }
 }

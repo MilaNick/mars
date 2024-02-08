@@ -1,0 +1,51 @@
+.form-booking {
+
+  &__wrap {
+    display: flex;
+    margin: 0 -10px;
+  }
+
+  &__input-wrap {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0 10px;
+  }
+
+  &__label {
+    text-transform: lowercase;
+    font: 700 16px $font-primary;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__input {
+    margin-top: 20px;
+    font: 400 16px $font-primary;
+    line-height: 26px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid $bg-secondary;
+    transition: border 0.2s;
+    &:hover {
+      border-bottom: 2px solid #2ea181;
+    }
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid #45d5ad;
+    }
+  }
+
+  &__btn-wrap {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 60px;
+  }
+
+  &__btn {
+    width: calc(100% / 3 - 10px);
+  }
+}

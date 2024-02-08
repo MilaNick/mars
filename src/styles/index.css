@@ -71,17 +71,20 @@ body {
 }
 
 .header {
+  position: relative;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
   margin-top: 32px;
+  z-index: 15;
 }
 .header__logo {
   flex-grow: 1;
 }
-.wrap,
-.wrapper {
+
+.main-screen,
+.full-screen-popup {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -90,30 +93,30 @@ body {
   height: 100%;
 }
 
-.wrapper {
+.full-screen-popup {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 10;
-  transition: transform 0.5s, opacity 0.2s 0.3s;
   opacity: 0;
+  z-index: 20;
+  transition: transform 0.5s, opacity 0.2s 0.3s;
   transform: translateX(100%);
 }
-.wrapper--active {
-  transition: transform 0.5s, opacity 0.2s;
+.full-screen-popup--active {
   opacity: 1;
+  transition: transform 0.5s, opacity 0.2s;
   transform: translateX(0);
 }
 
-.wrap {
+.main-screen {
   background-image: url("/src/images/stars.jpg");
   background-size: 150% 100%;
   background-position-x: 50%;
-  transition: background-position-x 0.3s;
+  transition: background-position-x 0.7s;
 }
-.wrap:after {
+.main-screen:after {
   content: "";
   position: absolute;
   top: 0;
@@ -147,9 +150,13 @@ body {
 }
 .nav__item {
   padding: 10px 18px;
-  letter-spacing: 0.01rem;
   color: #f2e1c2;
   font: 500 16px "Bebas Neue", sans-serif;
+  letter-spacing: 0.01rem;
+  transition: color 0.3s;
+}
+.nav__item:hover {
+  color: #f23207;
 }
 
 .first-screen {
@@ -159,31 +166,43 @@ body {
 .first-screen__line {
   position: absolute;
   width: 2px;
-  top: 0;
+  height: 0;
   left: 3px;
   bottom: 0;
   background: #d9d9d9;
   z-index: 10;
+  transition: height 0.3s 1s;
 }
-.first-screen__line-up-dot {
+body.active .first-screen__line {
+  height: 100%;
+}
+.first-screen__line-dot {
   position: absolute;
+  left: 50%;
+  background: #d9d9d9;
+  border-radius: 50%;
+  z-index: 10;
+  transform: translate(-50%);
+}
+.first-screen__line-dot--top {
+  width: 0;
+  height: 0;
+  top: 0;
+  transition: width 0.3s 1.3s, height 0.3s 1.3s;
+}
+body.active .first-screen__line-dot--top {
   width: 6px;
   height: 6px;
-  top: 0;
-  left: -2px;
-  border-radius: 100%;
-  background: #d9d9d9;
-  z-index: 10;
 }
-.first-screen__line-down-dot {
-  position: absolute;
+.first-screen__line-dot--bottom {
+  width: 0;
+  height: 0;
+  bottom: 0;
+  transition: width 0.3s 0.7s, height 0.3s 0.7s;
+}
+body.active .first-screen__line-dot--bottom {
   width: 10px;
   height: 10px;
-  left: -4px;
-  bottom: 0;
-  border-radius: 100%;
-  background: #d9d9d9;
-  z-index: 10;
 }
 .first-screen__above-text {
   padding: 8px 34px 34px;
@@ -217,9 +236,10 @@ body {
   background: #f2e1c2;
 }
 .buy-tickets__screen {
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 105px;
 }
 .buy-tickets__title {
   width: 50%;
@@ -227,11 +247,89 @@ body {
   font: 700 84px "Oswald", sans-serif;
   letter-spacing: 0.05rem;
   text-transform: uppercase;
-  transform: scaleY(1.2);
   line-height: 6.1rem;
+  transform: scaleY(1.2);
+}
+.buy-tickets__closed {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 0;
+  right: 0;
+  padding: 9px;
+  background: #262526;
+  cursor: pointer;
+}
+.buy-tickets__closed:hover {
+  background: #f23207;
+}
+.buy-tickets__icon {
+  width: 100%;
+  height: 100%;
 }
 .buy-tickets__form {
-  margin: 80px 0 0 0;
+  margin-top: 106px;
+}
+
+.form-booking__wrap {
+  display: flex;
+  margin: 0 -10px;
+}
+.form-booking__input-wrap {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+.form-booking__label {
+  text-transform: lowercase;
+  font: 700 16px "Montserrat", sans-serif;
+}
+.form-booking__label:first-letter {
+  text-transform: uppercase;
+}
+.form-booking__input {
+  margin-top: 20px;
+  font: 400 16px "Montserrat", sans-serif;
+  line-height: 26px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #262526;
+  transition: border 0.2s;
+}
+.form-booking__input:hover {
+  border-bottom: 2px solid #2ea181;
+}
+.form-booking__input:focus {
+  outline: none;
+  border-bottom: 2px solid #45d5ad;
+}
+.form-booking__btn-wrap {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 60px;
+}
+.form-booking__btn {
+  width: calc(33.3333333333% - 10px);
+}
+
+.qs-datepicker-container {
+  background: #262526;
+  color: #f2e1c2;
+}
+
+.qs-controls {
+  background: #262526;
+  color: #f2e1c2;
+}
+
+.qs-range-middle {
+  background: #2ea181;
+}
+
+.qs-active, .qs-range-end, .qs-range-start {
+  background: #45d5ad;
 }
 
 .btn {
@@ -240,6 +338,10 @@ body {
   text-transform: uppercase;
   border-radius: 4px;
   cursor: pointer;
+}
+.btn:hover {
+  background: #f23207;
+  color: #f2e1c2;
 }
 
 .btn--light {
@@ -252,53 +354,23 @@ body {
   color: #f2e1c2;
 }
 
+.pulse:hover,
+.pulse:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 16px rgba(255, 255, 255, 0);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #f23207;
+  }
+}
 .logo__svg {
   width: 82px;
   height: 36px;
+}
+.logo__svg-path {
   fill: #f23207;
-}
-
-.form-1__wrap {
-  display: flex;
-  margin: 0 -10px;
-}
-.form-1__input-wrap {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  margin: 0 10px;
-}
-.form-1__input-wrap label {
-  text-transform: lowercase;
-  font: 700 16px "Montserrat", sans-serif;
-}
-.form-1__input-wrap label:first-letter {
-  text-transform: uppercase;
-}
-.form-1__input-wrap input {
-  margin-top: 20px;
-  font: 400 16px "Montserrat", sans-serif;
-  line-height: 32px;
-  background: none;
-  border: none;
-  border-bottom: 2px solid #262526;
-  transition: border 0.2s;
-}
-.form-1__input-wrap input:hover {
-  border-bottom: 2px solid #2ea181;
-}
-.form-1__input-wrap input:focus {
-  outline: none;
-  border-bottom: 2px solid #45d5ad;
-}
-.form-1__btn-wrap {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin-top: 60px;
-}
-.form-1__btn {
-  width: calc(33.3333333333% - 10px);
 }
 
 /*# sourceMappingURL=index.css.map */

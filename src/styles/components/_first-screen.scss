@@ -1,40 +1,55 @@
 .first-screen {
   position: relative;
-  @include mt(-12px);
-  &__body {
-
-  }
+  margin-top: -12px;
 
   &__line {
     position: absolute;
     width: 2px;
-    top: 0;
+    height: 0;
     left: 3px;
     bottom: 0;
     background: $decor;
     z-index: 10;
+    transition: height 0.3s 1s;
+
+    body.active & {
+      height: 100%;
+    }
   }
 
-  &__line-up-dot {
+  &__line-dot {
     position: absolute;
-    width: 6px;
-    height: 6px;
-    top: 0;
-    left: -2px;
-    border-radius: 100%;
+    left: 50%;
     background: $decor;
+    border-radius: 50%;
     z-index: 10;
-  }
+    transform: translate(-50%);
 
-  &__line-down-dot {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    left: -4px;
-    bottom: 0;
-    border-radius: 100%;
-    background: $decor;
-    z-index: 10;
+    &--top {
+      $size: 6px;
+      width: 0;
+      height: 0;
+      top: 0;
+      transition: width 0.3s 1.3s, height 0.3s 1.3s;
+
+      body.active & {
+        width: $size;
+        height: $size;
+      }
+    }
+
+    &--bottom {
+      $size: 10px;
+      width: 0;
+      height: 0;
+      bottom: 0;
+      transition: width 0.3s 0.7s, height 0.3s 0.7s;
+
+      body.active & {
+        width: $size;
+        height: $size;
+      }
+    }
   }
 
   &__above-text {
@@ -67,5 +82,4 @@
     top: -40px;
     mix-blend-mode: darken;
   }
-
 }

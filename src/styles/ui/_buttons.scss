@@ -4,14 +4,29 @@
   text-transform: uppercase;
   border-radius: $b-radius;
   cursor: pointer;
+  &:hover {
+    background: $accent;
+    color: $text-primary;
+  }
 }
 
 .btn--light {
   background: $bg-primary;
   color: $text-secondary;
+
 }
 
 .btn--dark {
   background: $bg-secondary;
   color: $text-primary;
+}
+
+.pulse:hover,
+.pulse:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 16px rgba(#fff,0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 $accent; }
 }
