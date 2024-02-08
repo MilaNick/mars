@@ -62,7 +62,6 @@ body {
   width: 100%;
   height: 100%;
   background: #262526;
-  background: green;
   color: #262526;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
@@ -77,17 +76,53 @@ body {
   align-items: center;
   width: 100%;
   margin-top: 32px;
-  border: 1px solid red;
 }
 .header__logo {
   flex-grow: 1;
 }
-.wrap {
+.wrap,
+.wrapper {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   width: 100%;
   height: 100%;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  transition: transform 0.5s, opacity 0.2s 0.3s;
+  opacity: 0;
+  transform: translateX(100%);
+}
+.wrapper--active {
+  transition: transform 0.5s, opacity 0.2s;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.wrap {
+  background-image: url("/src/images/stars.jpg");
+  background-size: 150% 100%;
+  background-position-x: 50%;
+  transition: background-position-x 0.3s;
+}
+.wrap:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/src/images/blur.png");
+  background-size: 100% 100%;
+  z-index: 10;
 }
 
 .container {
@@ -175,19 +210,95 @@ body {
   mix-blend-mode: darken;
 }
 
+.buy-tickets {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  background: #f2e1c2;
+}
+.buy-tickets__screen {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+}
+.buy-tickets__title {
+  width: 50%;
+  color: #262526;
+  font: 700 84px "Oswald", sans-serif;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  transform: scaleY(1.2);
+  line-height: 6.1rem;
+}
+.buy-tickets__form {
+  margin: 80px 0 0 0;
+}
+
 .btn {
   padding: 10px 15px;
-  background: #f2e1c2;
   font: 600 16px "Montserrat", sans-serif;
   text-transform: uppercase;
   border-radius: 4px;
   cursor: pointer;
 }
 
+.btn--light {
+  background: #f2e1c2;
+  color: #262526;
+}
+
+.btn--dark {
+  background: #262526;
+  color: #f2e1c2;
+}
+
 .logo__svg {
   width: 82px;
   height: 36px;
   fill: #f23207;
+}
+
+.form-1__wrap {
+  display: flex;
+  margin: 0 -10px;
+}
+.form-1__input-wrap {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+.form-1__input-wrap label {
+  text-transform: lowercase;
+  font: 700 16px "Montserrat", sans-serif;
+}
+.form-1__input-wrap label:first-letter {
+  text-transform: uppercase;
+}
+.form-1__input-wrap input {
+  margin-top: 20px;
+  font: 400 16px "Montserrat", sans-serif;
+  line-height: 32px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #262526;
+  transition: border 0.2s;
+}
+.form-1__input-wrap input:hover {
+  border-bottom: 2px solid #2ea181;
+}
+.form-1__input-wrap input:focus {
+  outline: none;
+  border-bottom: 2px solid #45d5ad;
+}
+.form-1__btn-wrap {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 60px;
+}
+.form-1__btn {
+  width: calc(33.3333333333% - 10px);
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -9,11 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
           rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/js-datepicker/dist/datepicker.min.css">
     <link rel="stylesheet" href="src/styles/index.css">
     <title>MARS</title>
 </head>
 <body>
-<div class="wrap">
+<div class="wrap move-bg ">
     <div class="container">
         <header class="header">
             <div class="header__logo logo">
@@ -37,7 +38,7 @@
                     <a href="#" class="nav__item">Контакты</a>
                 </div>
             </nav>
-            <button class="header__btn btn">Купить билеты</button>
+            <button class="header__btn btn btn--light">Купить билеты</button>
         </header>
     </div>
     <div class="main">
@@ -51,7 +52,7 @@
                     <div class="first-screen__above-text">точка назначения:</div>
                     <div class="first-screen__wrap-text">
                         <div class="first-screen__mask-text">Mapc</div>
-                        <video class="first-screen__video" id="video" muted loop preload
+                        <video class="first-screen__video" id="video" autoplay muted loop preload
                                poster="src/images/video-screen.jpg">
                             <source src="src/video/Mars.m4v"/>
                             <source src="src/video/Mars.m4v"/>
@@ -63,9 +64,35 @@
         <!--        <div class="space"></div>-->
     </div>
 </div>
-<div class="wrap">
-
+<div class="wrapper show">
+    <div class="buy-tickets">
+        <div class="container">
+            <div class="buy-tickets__screen">
+                <h2 class="buy-tickets__title">Бронирование билетов</h2>
+                <form class="buy-tickets__form form-1" action="">
+                    <div class="form-1__wrap">
+                        <div class="form-1__input-wrap">
+                            <label for="date-from">Дата заезда</label>
+                            <input class="buy-tickets-range" id="date-from" name="date-from" type="text" placeholder="13.05.2022">
+                        </div>
+                        <div class="form-1__input-wrap">
+                            <label for="date-to">Дата выезда</label>
+                            <input class="buy-tickets-range" id="date-to" name="date-to" type="text" placeholder="13.05.2032">
+                        </div>
+                        <div class="form-1__input-wrap">
+                            <label for="count">Количество</label>
+                            <input name="count" type="text" placeholder="1 человек">
+                        </div>
+                    </div>
+                    <div class="form-1__btn-wrap">
+                        <button class="form-1__btn btn btn--dark" type="submit">Купить билеты</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+<script src="node_modules/js-datepicker/dist/datepicker.min.js"></script>
 <script src="src/scripts/index.js"></script>
 </body>
 </html>

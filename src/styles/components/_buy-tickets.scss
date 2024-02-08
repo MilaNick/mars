@@ -1,0 +1,31 @@
+
+.buy-tickets {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  background: $bg-primary;
+
+  &__screen {
+    display: flex;
+    flex-direction: column;
+    @include mt(100px);
+    //padding: 0 7px;
+  }
+
+  &__title {
+    width: 50%;
+    color: $text-secondary;
+    font: 700 84px $font-secondary;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    transform: scaleY(1.2);
+    line-height: 6.1rem;
+  }
+
+  &__form {
+    margin: 80px 0 0 0;
+    //margin: 80px -10px 10px;
+  }
+
+
+}
