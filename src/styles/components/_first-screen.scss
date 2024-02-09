@@ -10,9 +10,9 @@
     bottom: 0;
     background: $decor;
     z-index: 10;
-    transition: height 0.3s 1s;
+    transition: height 0.3s 0.3s;
 
-    body.active & {
+    .site-open-animation & {
       height: 100%;
     }
   }
@@ -30,9 +30,9 @@
       width: 0;
       height: 0;
       top: 0;
-      transition: width 0.3s 1.3s, height 0.3s 1.3s;
+      transition: width 0.3s 0.6s, height 0.3s 0.6s;
 
-      body.active & {
+      .site-open-animation & {
         width: $size;
         height: $size;
       }
@@ -43,9 +43,9 @@
       width: 0;
       height: 0;
       bottom: 0;
-      transition: width 0.3s 0.7s, height 0.3s 0.7s;
+      transition: width 0.3s, height 0.3s;
 
-      body.active & {
+      .site-open-animation & {
         width: $size;
         height: $size;
       }
@@ -57,9 +57,17 @@
     color: $accent;
     font: 500 36px $font-primary;
     letter-spacing: 0.05rem;
+    transform: translateY(40px);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
     //@include desktop() {
     //  background: red !important;
     //}
+
+    .site-open-animation & {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
   &__wrap-text {

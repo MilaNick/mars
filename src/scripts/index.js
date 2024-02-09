@@ -59,8 +59,8 @@ function ready() {
     /* for animation */
 
     setTimeout(() => {
-        document.body.classList.add('active');
-    }, 100);
+        document.body.classList.add('site-open-animation');
+    }, 700);
 
 }
 /* play/pause video onclick*/
