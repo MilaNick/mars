@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", ready);
 
 function ready() {
     /* mouse movement - changing background-position-x */
-    // document.querySelector('video').playbackRate = 1.7;
-
     const throttle = (fn, throttleTime) => {
         let start = -Infinity;
         let cachedResult;
@@ -66,6 +64,7 @@ function ready() {
 
 }
 /* play/pause video onclick*/
+
 // const myVideo = document.getElementById("video");
 // myVideo.addEventListener('click', function(e){
 //     e.preventDefault();
