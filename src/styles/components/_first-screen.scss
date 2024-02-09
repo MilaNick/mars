@@ -55,17 +55,17 @@
   &__above-text {
     padding: 8px 34px 34px;
     color: $accent;
-    font: 500 36px $font-primary;
+    font: $weight $font-size-lg $font-primary;
     letter-spacing: 0.05rem;
-    transform: translateY(40px);
+    transform: translateX(-70px);
     opacity: 0;
-    transition: transform 0.3s, opacity 0.3s;
-    //@include desktop() {
-    //  background: red !important;
-    //}
+    transition: transform 0.3s 0.6s, opacity 0.3s 0.6s;
+    @include laptop() {
+      font-size: 24px;
+    }
 
     .site-open-animation & {
-      transform: translateY(0);
+      transform: translateX(0);
       opacity: 1;
     }
   }
@@ -80,14 +80,36 @@
     margin-left: 6px;
     margin-bottom: -0.1em;
     color: $text-primary;
-    font: 500 715px $font-tertiary;
+    font: $weight 715px $font-tertiary;
     letter-spacing: -0.7rem;
     line-height: 0.82;
+
+    @include desktop() {
+      font-size: 565px;
+    }
+
+    @include laptop() {
+      font-size: 450px;
+    }
+
+    @include mobile() {
+      font-size: 400px;
+    }
+
   }
 
   &__video {
     position: absolute;
     top: -40px;
     mix-blend-mode: darken;
+
+    @include laptop() {
+      top: -20px;
+    }
+
+    @include mobile() {
+      top: 2px;
+    }
+
   }
 }

@@ -4,9 +4,14 @@
   text-transform: uppercase;
   border-radius: $b-radius;
   cursor: pointer;
+  white-space: nowrap;
   &:hover {
     background: $accent;
     color: $text-primary;
+  }
+
+  @include mobile() {
+    font-size: $font-size-md;
   }
 }
 
@@ -19,6 +24,7 @@
 .btn--dark {
   background: $bg-secondary;
   color: $text-primary;
+  font-size: $font-size;
 }
 
 .pulse:hover,

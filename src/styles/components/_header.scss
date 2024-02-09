@@ -6,8 +6,23 @@
   width: 100%;
   margin-top: 32px;
   z-index: 15;
+  @include laptop() {
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  @include mobile() {
+    margin-top: 12px;
+  }
 
   &__logo {
     flex-grow: 1;
+    @include mobile() {
+      flex-grow: 0;
+    }
+  }
+
+  &__btn {
+
   }
 }

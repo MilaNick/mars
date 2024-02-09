@@ -1,24 +1,39 @@
 .buy-tickets {
+  position: relative;
   display: flex;
   flex-grow: 1;
   width: 100%;
+  max-height: 100%;
   background: $bg-primary;
+  overflow: auto;
 
   &__screen {
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-top: 105px;
+    margin-top: 108px;
   }
 
   &__title {
-    width: 50%;
     color: $text-secondary;
-    font: 700 84px $font-secondary;
-    letter-spacing: 0.05rem;
+    font: $weight-lg 84px $font-secondary;
+    letter-spacing: 0.01em;
     text-transform: uppercase;
-    line-height: 6.1rem;
+    line-height: 100px;
     transform: scaleY(1.2);
+
+    @include laptop() {
+      font-size: 70px;
+      line-height: 1;
+    }
+
+    @include mobile() {
+      text-align: center;
+    }
+
+    @include mobile-sm() {
+      font-size: 50px;
+    }
   }
 
   &__closed {
@@ -30,9 +45,16 @@
     padding: 9px;
     background: $bg-secondary;
     cursor: pointer;
+    z-index: 20;
     &:hover {
       background: $accent;
     }
+
+    @include laptop() {
+      top: -70px;
+      right: 20px;
+    }
+
   }
 
   &__icon {
@@ -42,5 +64,9 @@
 
   &__form {
     margin-top: 106px;
+
+    @include desktop() {
+      margin-top: 60px;
+    }
   }
 }

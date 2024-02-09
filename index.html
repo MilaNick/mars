@@ -39,6 +39,11 @@
                 </div>
             </nav>
             <button class="header__btn btn btn--light pulse">Купить билеты</button>
+            <div class="nav__burger-wrap ">
+                <svg class="nav__burger" width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.333 22.667h21.333v-2.667h-21.333v2.667zM5.333 17.333h21.333v-2.667h-21.333v2.667zM5.333 9.333v2.667h21.333v-2.667h-21.333z"></path>
+                </svg>
+            </div>
         </header>
     </div>
     <div class="main">
@@ -54,22 +59,21 @@
                         <div class="first-screen__mask-text">Mapc</div>
                         <video class="first-screen__video" id="video" autoplay muted loop preload
                                poster="src/images/video-screen.jpg">
-                            <source src="src/video/Mars.m4v"/>
+                            <source src="src/images/video-screen.jpg" />
                             <source src="src/video/Mars.m4v"/>
                         </video>
                     </div>
                 </div>
             </section>
         </div>
-        <!--        <div class="space"></div>-->
     </div>
 </div>
 <div class="full-screen-popup">
     <div class="buy-tickets">
         <div class="container">
             <div class="buy-tickets__screen">
-                <h2 class="buy-tickets__title">Бронирование билетов</h2>
                 <div class="buy-tickets__closed pulse"><img class="buy-tickets__icon" src="src/images/svg/close.svg" alt="close"></div>
+                <h2 class="buy-tickets__title">Бронирование<br>билетов</h2>
                 <form class="buy-tickets__form form-booking" autocomplete="off" action="">
                     <div class="form-booking__wrap">
                         <div class="form-booking__input-wrap">
@@ -93,6 +97,19 @@
                 </form>
             </div>
         </div>
+    </div>
+</div>
+<div class="full-screen-nav-mobile">
+
+    <div class="container">
+        <div class="nav-mobile">
+            <a href="#" class="nav-mobile__item">О Марсе</a>
+            <a href="#" class="nav-mobile__item">Процесс</a>
+            <a href="#" class="nav-mobile__item">Билеты</a>
+            <a href="#" class="nav-mobile__item">Новости</a>
+            <a href="#" class="nav-mobile__item">Контакты</a>
+        </div>
+        <div class="nav-mobile__closed pulse"><img class="buy-tickets__icon" src="src/images/svg/close.svg" alt="close"></div>
     </div>
 </div>
 <script src="node_modules/js-datepicker/dist/datepicker.min.js"></script>

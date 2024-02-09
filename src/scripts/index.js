@@ -16,7 +16,7 @@ function ready() {
     }
 
     const moveBg = document.querySelector('.move-bg');
-    moveBg.addEventListener('mousemove', throttle((e) => {
+    const handlerMove = (e) => {
         const header = document.querySelector('.header');
         const { y: headerY, height: headerHeight} = header.getBoundingClientRect();
         const headerBottomY = headerY + headerHeight;
@@ -28,7 +28,9 @@ function ready() {
         const offset = e.clientX - centerBody;
         const newPosition = offset * DEFAULT_POSITION / centerBody + DEFAULT_POSITION;
         moveBg.setAttribute("style", `background-position-x: ${newPosition}%`)
-    }, 110));
+    }
+    moveBg.addEventListener('mousemove', throttle(handlerMove,110));
+    moveBg.addEventListener('pointermove', throttle(handlerMove,110));
 
     /* fullscreenPopup */
     const fullscreenPopup = document.querySelector('.full-screen-popup');
@@ -63,6 +65,20 @@ function ready() {
     }, 700);
 
 }
+
+/* nav mobile */
+const burger = document.querySelector('.nav__burger-wrap');
+const navMobile = document.querySelector('.full-screen-nav-mobile');
+const btnClosedNav = document.querySelector('.nav-mobile__closed');
+
+burger.addEventListener('click', () => {
+    navMobile.classList.add('full-screen-nav-mobile--active');
+})
+
+btnClosedNav.addEventListener('click', () => {
+    navMobile.classList.remove('full-screen-nav-mobile--active');
+})
+
 /* play/pause video onclick*/
 
 // const myVideo = document.getElementById("video");

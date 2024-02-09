@@ -10,6 +10,7 @@
 
 .full-screen-popup {
   position: absolute;
+  height: 100vh;
   top: 0;
   left: 0;
   bottom: 0;
@@ -48,6 +49,9 @@
   width: 100%;
   margin: 0 auto;
   padding: 0 15px;
+  @include laptop() {
+    padding: 0 10px;
+  }
 }
 
 .main {

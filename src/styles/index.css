@@ -59,6 +59,7 @@ html {
 }
 
 body {
+  min-width: 320px;
   width: 100%;
   height: 100%;
   background: #262526;
@@ -79,10 +80,25 @@ body {
   margin-top: 32px;
   z-index: 15;
 }
+@media (max-width: 991px) {
+  .header {
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .header {
+    margin-top: 12px;
+  }
+}
 .header__logo {
   flex-grow: 1;
 }
-
+@media (max-width: 767px) {
+  .header__logo {
+    flex-grow: 0;
+  }
+}
 .main-screen,
 .full-screen-popup {
   display: flex;
@@ -95,6 +111,7 @@ body {
 
 .full-screen-popup {
   position: absolute;
+  height: 100vh;
   top: 0;
   left: 0;
   bottom: 0;
@@ -134,6 +151,11 @@ body {
   margin: 0 auto;
   padding: 0 15px;
 }
+@media (max-width: 991px) {
+  .container {
+    padding: 0 10px;
+  }
+}
 
 .main {
   display: flex;
@@ -144,19 +166,119 @@ body {
   width: 100%;
 }
 
+@media (max-width: 767px) {
+  .nav {
+    display: none;
+  }
+}
 .nav__group {
   display: flex;
   padding: 0 26px;
 }
+@media (max-width: 1199px) {
+  .nav__group {
+    padding: 0 10px;
+  }
+}
 .nav__item {
-  padding: 10px 18px;
+  padding: 10px 15px;
   color: #f2e1c2;
-  font: 500 16px "Bebas Neue", sans-serif;
-  letter-spacing: 0.01rem;
+  font: 500 16px "Montserrat", sans-serif;
+  letter-spacing: 0.01em;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 .nav__item:hover {
   color: #f23207;
+}
+@media (max-width: 991px) {
+  .nav__item {
+    padding: 10px 5px;
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 767px) {
+  .nav__item {
+    font-size: 14px;
+  }
+}
+.nav__burger-wrap {
+  display: none;
+  transition: opacity 0.2s;
+}
+@media (max-width: 767px) {
+  .nav__burger-wrap {
+    display: flex;
+  }
+}
+.nav__burger-wrap:hover svg {
+  fill: #f23207;
+}
+.nav__burger {
+  width: 50px;
+  height: 50px;
+  fill: #f2e1c2;
+}
+
+.full-screen-nav-mobile {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #262526;
+  opacity: 0;
+  z-index: 30;
+  transition: transform 0.5s, opacity 0.2s 0.3s;
+  transform: translateX(100%);
+}
+.full-screen-nav-mobile--active {
+  opacity: 1;
+  transition: transform 0.5s, opacity 0.2s;
+  transform: translateX(0);
+}
+
+.nav-mobile {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 80px;
+}
+.nav-mobile__item {
+  width: 100%;
+  padding: 15px 0;
+  color: #f2e1c2;
+  font: 400 16px "Montserrat", sans-serif;
+  white-space: nowrap;
+  border-bottom: 2px dotted #413c3c;
+  transition: color 0.3s;
+}
+.nav-mobile__item:hover {
+  color: #f23207;
+  border-bottom: 2px dotted #595858;
+}
+.nav-mobile__closed {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 20px;
+  right: 28px;
+  padding: 9px;
+  background: #413c3c;
+  cursor: pointer;
+}
+.nav-mobile__closed:hover {
+  background: #f23207;
+}
+.nav-mobile__icon {
+  width: 100%;
+  height: 100%;
+  fill: #f2e1c2;
 }
 
 .first-screen {
@@ -171,9 +293,9 @@ body {
   bottom: 0;
   background: #d9d9d9;
   z-index: 10;
-  transition: height 0.3s 1s;
+  transition: height 0.3s 0.3s;
 }
-body.active .first-screen__line {
+.site-open-animation .first-screen__line {
   height: 100%;
 }
 .first-screen__line-dot {
@@ -188,9 +310,9 @@ body.active .first-screen__line {
   width: 0;
   height: 0;
   top: 0;
-  transition: width 0.3s 1.3s, height 0.3s 1.3s;
+  transition: width 0.3s 0.6s, height 0.3s 0.6s;
 }
-body.active .first-screen__line-dot--top {
+.site-open-animation .first-screen__line-dot--top {
   width: 6px;
   height: 6px;
 }
@@ -198,9 +320,9 @@ body.active .first-screen__line-dot--top {
   width: 0;
   height: 0;
   bottom: 0;
-  transition: width 0.3s 0.7s, height 0.3s 0.7s;
+  transition: width 0.3s, height 0.3s;
 }
-body.active .first-screen__line-dot--bottom {
+.site-open-animation .first-screen__line-dot--bottom {
   width: 10px;
   height: 10px;
 }
@@ -209,6 +331,18 @@ body.active .first-screen__line-dot--bottom {
   color: #f23207;
   font: 500 36px "Montserrat", sans-serif;
   letter-spacing: 0.05rem;
+  transform: translateX(-70px);
+  opacity: 0;
+  transition: transform 0.3s 0.6s, opacity 0.3s 0.6s;
+}
+@media (max-width: 991px) {
+  .first-screen__above-text {
+    font-size: 24px;
+  }
+}
+.site-open-animation .first-screen__above-text {
+  transform: translateX(0);
+  opacity: 1;
 }
 .first-screen__wrap-text {
   position: relative;
@@ -223,32 +357,75 @@ body.active .first-screen__line-dot--bottom {
   letter-spacing: -0.7rem;
   line-height: 0.82;
 }
+@media (max-width: 1199px) {
+  .first-screen__mask-text {
+    font-size: 565px;
+  }
+}
+@media (max-width: 991px) {
+  .first-screen__mask-text {
+    font-size: 450px;
+  }
+}
+@media (max-width: 767px) {
+  .first-screen__mask-text {
+    font-size: 400px;
+  }
+}
 .first-screen__video {
   position: absolute;
   top: -40px;
   mix-blend-mode: darken;
 }
+@media (max-width: 991px) {
+  .first-screen__video {
+    top: -20px;
+  }
+}
+@media (max-width: 767px) {
+  .first-screen__video {
+    top: 2px;
+  }
+}
 
 .buy-tickets {
+  position: relative;
   display: flex;
   flex-grow: 1;
   width: 100%;
+  max-height: 100%;
   background: #f2e1c2;
+  overflow: auto;
 }
 .buy-tickets__screen {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: 105px;
+  margin-top: 108px;
 }
 .buy-tickets__title {
-  width: 50%;
   color: #262526;
   font: 700 84px "Oswald", sans-serif;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  line-height: 6.1rem;
+  line-height: 100px;
   transform: scaleY(1.2);
+}
+@media (max-width: 991px) {
+  .buy-tickets__title {
+    font-size: 70px;
+    line-height: 1;
+  }
+}
+@media (max-width: 767px) {
+  .buy-tickets__title {
+    text-align: center;
+  }
+}
+@media (max-width: 575px) {
+  .buy-tickets__title {
+    font-size: 50px;
+  }
 }
 .buy-tickets__closed {
   position: absolute;
@@ -259,9 +436,16 @@ body.active .first-screen__line-dot--bottom {
   padding: 9px;
   background: #262526;
   cursor: pointer;
+  z-index: 20;
 }
 .buy-tickets__closed:hover {
   background: #f23207;
+}
+@media (max-width: 991px) {
+  .buy-tickets__closed {
+    top: -70px;
+    right: 20px;
+  }
 }
 .buy-tickets__icon {
   width: 100%;
@@ -270,16 +454,35 @@ body.active .first-screen__line-dot--bottom {
 .buy-tickets__form {
   margin-top: 106px;
 }
+@media (max-width: 1199px) {
+  .buy-tickets__form {
+    margin-top: 60px;
+  }
+}
 
 .form-booking__wrap {
   display: flex;
   margin: 0 -10px;
+}
+@media (max-width: 1199px) {
+  .form-booking__wrap {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 .form-booking__input-wrap {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   margin: 0 10px;
+}
+@media (max-width: 1199px) {
+  .form-booking__input-wrap {
+    width: 100%;
+  }
+  .form-booking__input-wrap:not(:first-child) {
+    margin-top: 30px;
+  }
 }
 .form-booking__label {
   text-transform: lowercase;
@@ -291,7 +494,7 @@ body.active .first-screen__line-dot--bottom {
 .form-booking__input {
   margin-top: 20px;
   font: 400 16px "Montserrat", sans-serif;
-  line-height: 26px;
+  line-height: 28px;
   background: none;
   border: none;
   border-bottom: 2px solid #262526;
@@ -310,8 +513,29 @@ body.active .first-screen__line-dot--bottom {
   width: 100%;
   margin-top: 60px;
 }
+@media (max-width: 991px) {
+  .form-booking__btn-wrap {
+    margin-top: 88px;
+  }
+}
+@media (max-width: 767px) {
+  .form-booking__btn-wrap {
+    margin-top: 48px;
+  }
+}
 .form-booking__btn {
   width: calc(33.3333333333% - 10px);
+}
+@media (max-width: 1199px) {
+  .form-booking__btn {
+    width: 50%;
+  }
+}
+@media (max-width: 991px) {
+  .form-booking__btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
 
 .qs-datepicker-container {
@@ -338,10 +562,16 @@ body.active .first-screen__line-dot--bottom {
   text-transform: uppercase;
   border-radius: 4px;
   cursor: pointer;
+  white-space: nowrap;
 }
 .btn:hover {
   background: #f23207;
   color: #f2e1c2;
+}
+@media (max-width: 767px) {
+  .btn {
+    font-size: 14px;
+  }
 }
 
 .btn--light {
@@ -352,6 +582,7 @@ body.active .first-screen__line-dot--bottom {
 .btn--dark {
   background: #262526;
   color: #f2e1c2;
+  font-size: 16px;
 }
 
 .pulse:hover,
