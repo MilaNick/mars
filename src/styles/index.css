@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
@@ -54,6 +55,22 @@ button {
 /* base sizes */
 /* fonts */
 /* color */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #f23207;
+  }
+}
+@keyframes dots {
+  0% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  100% {
+    content: "...";
+  }
+}
 html {
   height: 100%;
 }
@@ -99,51 +116,6 @@ body {
     flex-grow: 0;
   }
 }
-.main-screen,
-.full-screen-popup {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.full-screen-popup {
-  position: absolute;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  opacity: 0;
-  z-index: 20;
-  transition: transform 0.5s, opacity 0.2s 0.3s;
-  transform: translateX(100%);
-}
-.full-screen-popup--active {
-  opacity: 1;
-  transition: transform 0.5s, opacity 0.2s;
-  transform: translateX(0);
-}
-
-.main-screen {
-  background-image: url("/src/images/stars.jpg");
-  background-size: 150% 100%;
-  background-position-x: 50%;
-  transition: background-position-x 0.7s;
-}
-.main-screen:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("/src/images/blur.png");
-  background-size: 100% 100%;
-  z-index: 10;
-}
 
 .container {
   max-width: 1230px;
@@ -166,6 +138,53 @@ body {
   width: 100%;
 }
 
+.full-screen-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  z-index: 20;
+  transition: transform 0.5s, opacity 0.2s 0.3s;
+  transform: translateX(100%);
+}
+.full-screen-popup--active {
+  opacity: 1;
+  transition: transform 0.5s, opacity 0.2s;
+  transform: translateX(0);
+}
+
+.main-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url("/src/images/stars.jpg");
+  background-size: 150% 100%;
+  background-position-x: 50%;
+  transition: background-position-x 0.7s;
+}
+.main-screen:after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/src/images/blur.png");
+  background-size: 100% 100%;
+  z-index: 10;
+}
+
+/* menu for desktop */
 @media (max-width: 767px) {
   .nav {
     display: none;
@@ -185,8 +204,8 @@ body {
   color: #f2e1c2;
   font: 500 16px "Montserrat", sans-serif;
   letter-spacing: 0.01em;
-  transition: color 0.3s;
   white-space: nowrap;
+  transition: color 0.3s;
 }
 .nav__item:hover {
   color: #f23207;
@@ -220,6 +239,7 @@ body {
   fill: #f2e1c2;
 }
 
+/* menu for mobile */
 .full-screen-nav-mobile {
   position: absolute;
   display: flex;
@@ -246,8 +266,8 @@ body {
 .nav-mobile {
   display: flex;
   flex-direction: column;
-  text-align: center;
   margin-top: 80px;
+  text-align: center;
 }
 .nav-mobile__item {
   width: 100%;
@@ -284,6 +304,7 @@ body {
 .first-screen {
   position: relative;
   margin-top: -12px;
+  padding-left: 12px;
 }
 .first-screen__line {
   position: absolute;
@@ -327,12 +348,12 @@ body {
   height: 10px;
 }
 .first-screen__above-text {
-  padding: 8px 34px 34px;
+  padding: 8px 18px 34px;
   color: #f23207;
   font: 500 36px "Montserrat", sans-serif;
   letter-spacing: 0.05rem;
-  transform: translateX(-70px);
   opacity: 0;
+  transform: translateX(-70px);
   transition: transform 0.3s 0.6s, opacity 0.3s 0.6s;
 }
 @media (max-width: 991px) {
@@ -341,59 +362,78 @@ body {
   }
 }
 .site-open-animation .first-screen__above-text {
-  transform: translateX(0);
   opacity: 1;
+  transform: translateX(0);
 }
-.first-screen__wrap-text {
+.first-screen__text-container {
   position: relative;
   display: flex;
+  height: 518px;
   overflow: hidden;
 }
-.first-screen__mask-text {
-  margin-left: 6px;
-  margin-bottom: -0.1em;
-  color: #f2e1c2;
-  font: 500 715px "Bebas Neue", sans-serif;
-  letter-spacing: -0.7rem;
-  line-height: 0.82;
-}
 @media (max-width: 1199px) {
-  .first-screen__mask-text {
-    font-size: 565px;
+  .first-screen__text-container {
+    height: 420px;
   }
 }
 @media (max-width: 991px) {
-  .first-screen__mask-text {
-    font-size: 450px;
+  .first-screen__text-container {
+    height: 320px;
   }
 }
 @media (max-width: 767px) {
-  .first-screen__mask-text {
-    font-size: 400px;
+  .first-screen__text-container {
+    height: 234px;
+  }
+}
+@media (max-width: 575px) {
+  .first-screen__text-container {
+    height: 125px;
+  }
+}
+.first-screen__svg {
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.first-screen__text {
+  font: 500 715px "Bebas Neue", sans-serif;
+  letter-spacing: -0.015em;
+  dominant-baseline: hanging;
+}
+@media (max-width: 1199px) {
+  .first-screen__text {
+    font-size: 588px;
+  }
+}
+@media (max-width: 991px) {
+  .first-screen__text {
+    font-size: 444px;
+  }
+}
+@media (max-width: 767px) {
+  .first-screen__text {
+    font-size: 328px;
+  }
+}
+@media (max-width: 575px) {
+  .first-screen__text {
+    font-size: 176px;
   }
 }
 .first-screen__video {
-  position: absolute;
-  top: -40px;
-  mix-blend-mode: darken;
-}
-@media (max-width: 991px) {
-  .first-screen__video {
-    top: -20px;
-  }
-}
-@media (max-width: 767px) {
-  .first-screen__video {
-    top: 2px;
-  }
+  display: block;
+  clip-path: url(#videoText);
+  width: 100%;
+  object-fit: cover;
 }
 
 .buy-tickets {
   position: relative;
   display: flex;
   flex-grow: 1;
-  width: 100%;
   max-height: 100%;
+  width: 100%;
   background: #f2e1c2;
   overflow: auto;
 }
@@ -459,7 +499,52 @@ body {
     margin-top: 60px;
   }
 }
+.buy-tickets__success {
+  display: none;
+  width: 100%;
+  margin-top: 106px;
+  font: 500 22px "Montserrat", sans-serif;
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 0.3s, transform 0.3s;
+  text-transform: initial;
+  text-align: center;
+}
+.buy-tickets__success--show {
+  display: block;
+}
+.buy-tickets__success--appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+.buy-tickets__success-text {
+  color: #0f8c9b;
+}
+.buy-tickets__success-value--count {
+  font-weight: 700;
+}
+.buy-tickets__success-value--date-to {
+  font-weight: 700;
+}
+.buy-tickets__success-value--date-from {
+  font-weight: 700;
+}
 
+.form-booking {
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(0);
+}
+.form-booking--saving {
+  opacity: 0.7;
+  pointer-events: none;
+}
+.form-booking--fade {
+  opacity: 0;
+  transform: translateY(80px);
+}
+.form-booking--hidden {
+  display: none;
+}
 .form-booking__wrap {
   display: flex;
   margin: 0 -10px;
@@ -473,8 +558,8 @@ body {
 .form-booking__input-wrap {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  margin: 0 10px;
+  width: 33.3333333333%;
+  padding: 0 10px;
 }
 @media (max-width: 1199px) {
   .form-booking__input-wrap {
@@ -500,12 +585,18 @@ body {
   border-bottom: 2px solid #262526;
   transition: border 0.2s;
 }
+.form-booking__input[data-type=date] {
+  cursor: pointer;
+}
 .form-booking__input:hover {
-  border-bottom: 2px solid #2ea181;
+  border-bottom-color: #0f8c9b;
 }
 .form-booking__input:focus {
   outline: none;
-  border-bottom: 2px solid #45d5ad;
+  border-bottom-color: #18a7b8;
+}
+.form-booking__input--invalid {
+  border-bottom-color: #f23207;
 }
 .form-booking__btn-wrap {
   display: flex;
@@ -537,6 +628,26 @@ body {
     margin-bottom: 10px;
   }
 }
+.form-booking--saving .form-booking__btn {
+  position: relative;
+}
+.form-booking--saving .form-booking__btn:before {
+  content: "покупка билетов";
+}
+.form-booking--saving .form-booking__btn:after {
+  content: "";
+  position: absolute;
+  animation: dots 1s infinite linear;
+}
+.form-booking--saving .form-booking__btn-text {
+  display: none;
+}
+.form-booking__error-message {
+  margin-top: 5px;
+  color: #f23207;
+  font: 400 12px "Montserrat", sans-serif;
+  text-transform: initial;
+}
 
 .qs-datepicker-container {
   background: #262526;
@@ -549,11 +660,11 @@ body {
 }
 
 .qs-range-middle {
-  background: #2ea181;
+  background: #0f8c9b;
 }
 
 .qs-active, .qs-range-end, .qs-range-start {
-  background: #45d5ad;
+  background: #18a7b8;
 }
 
 .btn {
@@ -591,11 +702,6 @@ body {
   box-shadow: 0 0 0 16px rgba(255, 255, 255, 0);
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 #f23207;
-  }
-}
 .logo__svg {
   width: 82px;
   height: 36px;

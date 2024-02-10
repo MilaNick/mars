@@ -2,8 +2,8 @@
   position: relative;
   display: flex;
   flex-grow: 1;
-  width: 100%;
   max-height: 100%;
+  width: 100%;
   background: $bg-primary;
   overflow: auto;
 
@@ -67,6 +67,49 @@
 
     @include desktop() {
       margin-top: 60px;
+    }
+  }
+
+  &__success {
+    display: none;
+    //justify-content: center;
+    //align-items: center;
+    //flex-wrap: wrap;
+    width: 100%;
+    margin-top: 106px;
+    //padding: 30px;
+    //font: $weight $font-size-lg $font-secondary;
+    font: 500 22px $font-primary;
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 0.3s, transform 0.3s;
+    text-transform: initial;
+    text-align: center;
+
+    &--show {
+      //display: flex;
+      display: block;
+    }
+
+    &--appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &-text {
+      color: $range-calendar;
+    }
+
+    &-value--count {
+      font-weight: $weight-lg;
+    }
+
+    &-value--date-to {
+      font-weight: $weight-lg;
+    }
+
+    &-value--date-from {
+      font-weight: $weight-lg;
     }
   }
 }

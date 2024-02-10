@@ -9,9 +9,9 @@
 }
 
 .qs-range-middle {
-  background: #2ea181;
+  background: $range-calendar
 }
 
 .qs-active, .qs-range-end, .qs-range-start {
-  background: #45d5ad;
+  background: $active-calendar;
 }

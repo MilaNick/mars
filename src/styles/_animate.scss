@@ -1,0 +1,15 @@
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 $accent; }
+}
+
+@keyframes dots {
+  0% {
+    content: '.';
+  }
+  50% {
+    content: '..';
+  }
+  100% {
+    content: '...';
+  }
+}

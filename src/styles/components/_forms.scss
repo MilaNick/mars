@@ -1,4 +1,19 @@
 .form-booking {
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(0);
+
+  &--saving {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  &--fade {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  &--hidden {
+    display: none;
+  }
 
   &__wrap {
     display: flex;
@@ -13,8 +28,9 @@
   &__input-wrap {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    margin: 0 10px;
+    width: calc( 100% / 3 );
+    padding: 0 10px;
+
     @include desktop() {
       width: 100%;
       &:not(:first-child) {
@@ -41,12 +57,19 @@
     border: none;
     border-bottom: 2px solid $bg-secondary;
     transition: border 0.2s;
+    &[data-type='date'] {
+      cursor: pointer;
+    }
     &:hover {
-      border-bottom: 2px solid #2ea181;
+      border-bottom-color: $range-calendar;
     }
     &:focus {
       outline: none;
-      border-bottom: 2px solid #45d5ad;
+      border-bottom-color: $active-calendar;
+    }
+
+    &--invalid {
+      border-bottom-color: $accent;
     }
   }
 
@@ -76,5 +99,32 @@
       width: 100%;
       margin-bottom: 10px;
     }
+
+    .form-booking--saving & {
+      position: relative;
+
+      &:before {
+        content: 'покупка билетов';
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        animation: dots 1s infinite linear;
+      }
+    }
+  }
+
+  &__btn-text {
+    .form-booking--saving & {
+      display: none;
+    }
+  }
+
+  &__error-message {
+    margin-top: 5px;
+    color: $accent;
+    font: $weight-md $font-size-sm "Montserrat", sans-serif;
+    text-transform: initial;
   }
 }
